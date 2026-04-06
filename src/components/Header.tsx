@@ -28,11 +28,16 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2.5 no-underline group py-2">
-            <img 
-              src="/logo.png" 
-              alt="Arvesta Clothing" 
-              className="h-16 w-auto transition-transform duration-200 group-hover:scale-105" 
-            />
+            <div
+              className="transition-all duration-300 rounded-xl overflow-hidden"
+              style={dark ? { background: 'white', padding: '4px 8px' } : {}}
+            >
+              <img 
+                src="/logo.png" 
+                alt="Arvesta Clothing" 
+                className="h-16 w-auto transition-transform duration-200 group-hover:scale-105" 
+              />
+            </div>
           </Link>
 
           {/* Desktop Nav */}
