@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useState, useRef, type ChangeEvent, type FormEvent } from 'react'
+import { useState, type FormEvent } from 'react'
 import Header from '@/components/Header'
-import { Download, Send, FileText, AlertCircle } from 'lucide-react'
+import { Download, Send, FileText } from 'lucide-react'
 import { sendOrderEmail } from '@/lib/mail'
 
 export const Route = createFileRoute('/order')({
@@ -46,10 +46,8 @@ const INITIAL: OrderData = {
 
 function OrderPage() {
   const [form, setForm] = useState<OrderData>(INITIAL)
-  const [logoFile, setLogoFile] = useState<File | null>(null)
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
-  const fileRef = useRef<HTMLInputElement>(null)
 
   // Derived calculations
   const totalQty = SIZES.reduce((sum, s) => sum + (parseInt(form.sizes[s]) || 0), 0)
@@ -63,9 +61,6 @@ function OrderPage() {
   const setSize = (size: Size, value: string) =>
     setForm((f) => ({ ...f, sizes: { ...f.sizes, [size]: value } }))
 
-  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files?.[0]) setLogoFile(e.target.files[0])
-  }
 
   // ─── Download as CSV (Excel-compatible) ─────────────────
   const downloadCSV = () => {
@@ -86,7 +81,6 @@ function OrderPage() {
       ['', ''],
       ['PRINT DETAILS', ''],
       ['Logo/Design Details', form.printDetails],
-      ['Logo File', logoFile?.name || 'Not provided'],
       ['', ''],
       ['PRICE & PAYMENT', ''],
       ['Price Per Piece (₹)', form.pricePerPiece],
@@ -143,7 +137,6 @@ ${SIZES.map((s) => `<tr><td>Size ${s}</td><td>${form.sizes[s] || '0'}</td></tr>`
 <h2>Print Details</h2>
 <table>
 <tr><td>Logo/Design Details</td><td>${form.printDetails}</td></tr>
-<tr><td>Logo File</td><td>${logoFile?.name || 'Not provided'}</td></tr>
 </table>
 <h2>Price &amp; Payment</h2>
 <table>
@@ -189,7 +182,6 @@ ${SIZES.map((s) => `<tr><td>Size ${s}</td><td>${form.sizes[s] || '0'}</td></tr>`
       balanceAmount: balanceAmount.toFixed(2),
       paymentTerms: form.paymentTerms,
       deliveryTime: form.deliveryTime,
-      logoFileName: logoFile?.name,
     }
 
     try {
@@ -325,33 +317,18 @@ ${SIZES.map((s) => `<tr><td>Size ${s}</td><td>${form.sizes[s] || '0'}</td></tr>`
               <textarea className="form-input" rows={3} placeholder="Describe your logo or design (colors, text, placement instructions...)" value={form.printDetails} onChange={(e) => set('printDetails', e.target.value)} style={{ resize: 'vertical' }} />
             </div>
 
-            {/* File Upload */}
             <div>
               <label className="form-label">Attach Logo / Design File</label>
               <div
-                onClick={() => fileRef.current?.click()}
                 style={{
-                  border: `2px dashed ${logoFile ? 'var(--accent)' : 'var(--border)'}`,
-                  borderRadius: '6px', background: 'var(--surface)', padding: '2rem', textAlign: 'center', cursor: 'pointer',
-                  transition: 'border-color 0.2s',
+                  border: `2px dashed var(--border)`,
+                  borderRadius: '6px', background: 'var(--surface)', padding: '2rem', textAlign: 'center',
                 }}
               >
-                <input ref={fileRef} type="file" accept=".png,.jpg,.jpeg,.bmp" style={{ display: 'none' }} onChange={handleFileChange} />
-                {logoFile ? (
-                  <div>
-                    <p style={{ color: 'var(--accent)', fontWeight: 600, margin: '0 0 0.25rem' }}>{logoFile.name}</p>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', margin: 0 }}>Click to change</p>
-                  </div>
-                ) : (
-                  <div>
-                    <p style={{ color: 'var(--text)', fontWeight: 500, margin: '0 0 0.25rem' }}>Click to upload logo / design file</p>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', margin: 0 }}>Accepted: PNG, JPEG, BMP</p>
-                  </div>
-                )}
-              </div>
-              <div className="flex items-start gap-1.5 mt-2" style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>
-                <AlertCircle size={13} style={{ flexShrink: 0, marginTop: '2px' }} />
-                <span>File will not be emailed automatically. Please share the design separately on WhatsApp or email.</span>
+                <div>
+                  <p style={{ color: 'var(--accent)', fontWeight: 600, margin: '0 0 0.25rem' }}>Please share the design separately on WhatsApp</p>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', margin: 0 }}>Accepted: PNG, JPEG, BMP</p>
+                </div>
               </div>
             </div>
           </section>
