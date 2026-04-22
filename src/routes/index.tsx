@@ -1,85 +1,12 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import Header from '@/components/Header'
-import { MessageCircle, Package, Building2, ChefHat, Dumbbell, PartyPopper, CheckCircle2, ShieldCheck, Shirt } from 'lucide-react'
+import { MessageCircle, Package, Building2, ChefHat, Dumbbell, PartyPopper, CheckCircle2, ShieldCheck } from 'lucide-react'
 
 export const Route = createFileRoute('/')({
   component: HomePage,
 })
 
 const WA_URL = 'https://wa.me/919421612355'
-
-// ─── T-Shirt SVG Components ────────────────────────────────
-function PoloSvg() {
-  return (
-    <svg viewBox="0 0 200 240" className="w-full max-w-[140px] mx-auto" fill="none">
-      <path d="M55 55 L18 78 L34 138 L56 126 L56 210 L144 210 L144 126 L166 138 L182 78 L145 55 L128 32 Q100 18 72 32 Z" fill="var(--surface)" stroke="var(--border)" strokeWidth="2" />
-      <path d="M72 32 Q100 48 128 32 Q114 58 100 62 Q86 58 72 32Z" fill="var(--border)" stroke="var(--border)" strokeWidth="1" />
-      <line x1="100" y1="62" x2="100" y2="108" stroke="var(--border)" strokeWidth="1.5" strokeDasharray="4,3" />
-      <circle cx="100" cy="75" r="2" fill="var(--border)" />
-      <circle cx="100" cy="86" r="2" fill="var(--border)" />
-      <circle cx="100" cy="97" r="2" fill="var(--border)" />
-    </svg>
-  )
-}
-
-function PoloCustomSvg() {
-  return (
-    <svg viewBox="0 0 200 240" className="w-full max-w-[140px] mx-auto" fill="none">
-      <path d="M55 55 L18 78 L34 138 L56 126 L56 210 L144 210 L144 126 L166 138 L182 78 L145 55 L128 32 Q100 18 72 32 Z" fill="var(--surface)" stroke="var(--border)" strokeWidth="2" />
-      <path d="M72 32 Q100 48 128 32 Q114 58 100 62 Q86 58 72 32Z" fill="var(--border)" stroke="var(--border)" strokeWidth="1" />
-      <line x1="100" y1="62" x2="100" y2="108" stroke="var(--border)" strokeWidth="1.5" strokeDasharray="4,3" />
-      {/* Logo square left chest */}
-      <rect x="66" y="82" width="24" height="24" rx="3" fill="none" stroke="var(--accent)" strokeWidth="1.5" />
-      <text x="78" y="97" textAnchor="middle" fontSize="6" fill="var(--accent)" fontFamily="sans-serif" fontWeight="bold">LOGO</text>
-    </svg>
-  )
-}
-
-function PoloBackCustomSvg() {
-  return (
-    <svg viewBox="0 0 200 240" className="w-full max-w-[140px] mx-auto" fill="none">
-      <path d="M55 55 L18 78 L34 138 L56 126 L56 210 L144 210 L144 126 L166 138 L182 78 L145 55 L128 32 Q100 18 72 32 Z" fill="var(--surface)" stroke="var(--border)" strokeWidth="2" />
-      <path d="M72 32 Q100 44 128 32 Q114 56 100 58 Q86 56 72 32Z" fill="var(--border)" stroke="var(--border)" strokeWidth="1" />
-      {/* Logo rectangle back */}
-      <rect x="65" y="78" width="70" height="45" rx="3" fill="none" stroke="var(--accent)" strokeWidth="1.5" />
-      <text x="100" y="104" textAnchor="middle" fontSize="7" fill="var(--accent)" fontFamily="sans-serif" fontWeight="bold">BACK LOGO</text>
-    </svg>
-  )
-}
-
-function RoundSvg() {
-  return (
-    <svg viewBox="0 0 200 240" className="w-full max-w-[140px] mx-auto" fill="none">
-      <path d="M55 55 L18 78 L34 138 L56 126 L56 210 L144 210 L144 126 L166 138 L182 78 L145 55 L128 32 Q100 14 72 32 Z" fill="var(--surface)" stroke="var(--border)" strokeWidth="2" />
-      <ellipse cx="100" cy="42" rx="24" ry="16" fill="var(--border)" stroke="var(--border)" strokeWidth="1" />
-      <ellipse cx="100" cy="46" rx="17" ry="11" fill="var(--surface)" stroke="none" />
-    </svg>
-  )
-}
-
-function RoundCustomSvg() {
-  return (
-    <svg viewBox="0 0 200 240" className="w-full max-w-[140px] mx-auto" fill="none">
-      <path d="M55 55 L18 78 L34 138 L56 126 L56 210 L144 210 L144 126 L166 138 L182 78 L145 55 L128 32 Q100 14 72 32 Z" fill="var(--surface)" stroke="var(--border)" strokeWidth="2" />
-      <ellipse cx="100" cy="42" rx="24" ry="16" fill="var(--border)" stroke="var(--border)" strokeWidth="1" />
-      <ellipse cx="100" cy="46" rx="17" ry="11" fill="var(--surface)" stroke="none" />
-      <rect x="66" y="82" width="24" height="24" rx="3" fill="none" stroke="var(--accent)" strokeWidth="1.5" />
-      <text x="78" y="97" textAnchor="middle" fontSize="6" fill="var(--accent)" fontFamily="sans-serif" fontWeight="bold">LOGO</text>
-    </svg>
-  )
-}
-
-function RoundBackCustomSvg() {
-  return (
-    <svg viewBox="0 0 200 240" className="w-full max-w-[140px] mx-auto" fill="none">
-      <path d="M55 55 L18 78 L34 138 L56 126 L56 210 L144 210 L144 126 L166 138 L182 78 L145 55 L128 32 Q100 14 72 32 Z" fill="var(--surface)" stroke="var(--border)" strokeWidth="2" />
-      <ellipse cx="100" cy="42" rx="24" ry="16" fill="var(--border)" stroke="var(--border)" strokeWidth="1" />
-      <ellipse cx="100" cy="46" rx="17" ry="11" fill="var(--surface)" stroke="none" />
-      <rect x="65" y="78" width="70" height="45" rx="3" fill="none" stroke="var(--accent)" strokeWidth="1.5" />
-      <text x="100" y="104" textAnchor="middle" fontSize="7" fill="var(--accent)" fontFamily="sans-serif" fontWeight="bold">BACK LOGO</text>
-    </svg>
-  )
-}
 
 // ─── Sections ─────────────────────────────────────────────
 function HeroSection() {
@@ -182,43 +109,6 @@ function IndustriesSection() {
   )
 }
 
-function GallerySection() {
-  const items = [
-    { label: 'Polo — Plain White', Svg: PoloSvg },
-    { label: 'Polo — Custom Front', Svg: PoloCustomSvg },
-    { label: 'Polo — Custom Back', Svg: PoloBackCustomSvg },
-    { label: 'Round Neck — Plain', Svg: RoundSvg },
-    { label: 'Round Neck — Custom Front', Svg: RoundCustomSvg },
-    { label: 'Round Neck — Custom Back', Svg: RoundBackCustomSvg },
-  ]
-  return (
-    <section style={{ background: 'var(--bg)', padding: '6rem 0' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="section-label">Our Work</p>
-          <h2 className="section-title">Sample Gallery</h2>
-          <div className="flex justify-center gap-6 mt-4">
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', letterSpacing: '0.1em' }}>● Polo</span>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', letterSpacing: '0.1em' }}>● Round Neck</span>
-          </div>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-          {items.map(({ label, Svg }) => (
-            <div key={label} className="card overflow-hidden">
-              <div style={{ background: 'var(--surface)', padding: '2rem 1rem', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'center' }}>
-                <div style={{ maxWidth: '120px', width: '100%' }}><Svg /></div>
-              </div>
-              <div style={{ padding: '0.75rem 1rem' }}>
-                <p style={{ color: 'var(--text)', fontSize: '0.875rem', fontWeight: 500, margin: 0 }}>{label}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
 function BulkOrderSection() {
   return (
     <section style={{ background: 'var(--accent)', padding: '5rem 0' }}>
@@ -299,7 +189,6 @@ function HomePage() {
       <main>
         <HeroSection />
         <IndustriesSection />
-        <GallerySection />
         <BulkOrderSection />
       </main>
       <Footer />
