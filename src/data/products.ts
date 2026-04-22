@@ -10,12 +10,39 @@ export interface Product {
 const products: Array<Product> = [
   {
     id: 1,
-    name: 'Product 1',
-    image: '/placeholder.png',
+    name: 'Round Neck Plain',
+    image: '/1 round neck - front.png',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    shortDescription: 'A generic product description for your first product.',
-    price: 3000,
+      'High-quality plain round neck T-shirts, perfect for daily wear or corporate gifting. Available in various colors and sizes.',
+    shortDescription: 'Classic plain round neck t-shirts.',
+    price: 180,
+  },
+  {
+    id: 2,
+    name: 'Round Neck Custom',
+    image: '/3 R.Neck- front emobroidery.png',
+    description:
+      'Customized round neck T-shirts with your company logo or event designs. Choose from high-quality printing or embroidery options.',
+    shortDescription: 'Customized round neck t-shirts for your brand.',
+    price: 250,
+  },
+  {
+    id: 3,
+    name: 'Polo Plain',
+    image: '/5 polo plain.png',
+    description:
+      'Premium classic polo T-shirts for a professional look. Ideal for office wear and corporate uniforms.',
+    shortDescription: 'Elegant plain polo t-shirts.',
+    price: 350,
+  },
+  {
+    id: 4,
+    name: 'Polo Custom',
+    image: '/7 polo front embroidery.jpeg',
+    description:
+      'Professional polo T-shirts customized with high-end embroidery or premium printing. Perfect for reflecting your brand excellence.',
+    shortDescription: 'Customized polo t-shirts for corporate identity.',
+    price: 450,
   },
 ]
 
