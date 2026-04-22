@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { useState } from 'react'
 import { useTheme } from '@/routes/__root'
-import { Menu, X, Sun, Moon, Shirt } from 'lucide-react'
+import { Menu, X, Sun, Moon } from 'lucide-react'
 
 const NAV_LINKS = [
   { to: '/', label: 'Home' },
