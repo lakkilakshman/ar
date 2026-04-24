@@ -10,13 +10,14 @@ const WA_URL = 'https://wa.me/919421612355'
 
 // ─── Product Card ──────────────────────────────────────────
 function ProductCard({
-  title, category, description, front, back,
+  title, category, description, front, back, whatsappMessage,
 }: {
   title: string
   category: string
   description: string
   front: React.ReactNode
   back: React.ReactNode
+  whatsappMessage: string
 }) {
   return (
     <div className="card overflow-hidden">
@@ -41,7 +42,7 @@ function ProductCard({
         <h3 style={{ color: 'var(--text)', fontWeight: 700, fontSize: '1.05rem', margin: '0 0 0.5rem' }}>{title}</h3>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', lineHeight: 1.6, margin: '0 0 1rem' }}>{description}</p>
         <a
-          href={WA_URL} target="_blank" rel="noopener noreferrer"
+          href={`${WA_URL}?text=${encodeURIComponent(whatsappMessage)}`} target="_blank" rel="noopener noreferrer"
           className="btn-primary w-full justify-center"
           style={{ fontSize: '0.825rem', padding: '0.625rem 1rem' }}
         >
@@ -62,6 +63,7 @@ function ProductsPage() {
       description: 'Classic polo T-shirt with no custom print. Available in all sizes XS to XXXL. Suitable for uniforms and bulk orders.',
       front: <img src="/5%20polo%20plain.png" alt="Polo Plain Front" style={imgStyle} />,
       back: <img src="/6%20%20polo%20plain%20-%20back.png" alt="Polo Plain Back" style={imgStyle} />,
+      whatsappMessage: 'Hi, I’m interested in your Collared Plain T-Shirt. Could you share pricing, available colors, and bulk order details?',
     },
     {
       title: 'Polo Custom T-Shirt',
@@ -69,6 +71,7 @@ function ProductsPage() {
       description: 'Polo T-shirt with custom logo on left chest (front) and a rectangular logo print on the back. Fully personalized.',
       front: <img src="/7%20polo%20front%20embroidery.jpeg" alt="Polo Custom Front" style={imgStyle} />,
       back: <img src="/8%20%20polo%20custom%20back.png" alt="Polo Custom Back" style={imgStyle} />,
+      whatsappMessage: 'Hello, I’d like to enquire about your Collared Custom T-Shirt. Can you guide me on customization options, minimum order quantity, and pricing?',
     },
     {
       title: 'Plain Round Neck T-Shirt',
@@ -76,6 +79,7 @@ function ProductsPage() {
       description: 'Classic round neck T-shirt, no custom print. Comfortable, durable, and available in bulk from XS to XXXL.',
       front: <img src="/1%20round%20neck%20-%20front.png" alt="Round Neck Plain Front" style={imgStyle} />,
       back: <img src="/2%20Plain%20round%20neck%20T-shirt,%20back%20view.jpg" alt="Round Neck Plain Back" style={imgStyle} />,
+      whatsappMessage: 'Hi there, I’m interested in the Plain Round Neck T-Shirt. Could you let me know the price & sizes available?',
     },
     {
       title: 'Custom Round Neck T-Shirt',
@@ -83,6 +87,7 @@ function ProductsPage() {
       description: 'Round neck with square logo on left chest (front) and rectangular logo on the back. Perfect for events and corporate use.',
       front: <img src="/3%20R.Neck-%20front%20emobroidery.png" alt="Round Neck Custom Front" style={imgStyle} />,
       back: <img src="/4%20R.Neck-%20back%20print.png" alt="Round Neck Custom Back" style={imgStyle} />,
+      whatsappMessage: 'Hello, I’d like more details about your Custom Round Neck T-Shirt. Can you share info on customization options, pricing, and delivery time?',
     },
   ]
 
