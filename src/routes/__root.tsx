@@ -67,9 +67,10 @@ function AppShell({ children }: { children: ReactNode }) {
 }
 
 function WhatsAppFAB() {
+  const quoteMsg = "Hi, can you share a quotation for your T-shirt options? I’d also like to see some samples before proceeding."
   return (
     <a
-      href="https://wa.me/919421612355"
+      href={`https://wa.me/919421612355?text=${encodeURIComponent(quoteMsg)}`}
       target="_blank"
       rel="noopener noreferrer"
       className="whatsapp-fab pulse-glow"
