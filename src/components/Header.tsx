@@ -13,6 +13,7 @@ const NAV_LINKS = [
 export default function Header() {
   const { dark, toggleTheme } = useTheme()
   const [menuOpen, setMenuOpen] = useState(false)
+  const quoteMsg = "Hi, can you share a quotation for your T-shirt options? I’d also like to see some samples before proceeding."
 
   return (
     <header
@@ -74,7 +75,7 @@ export default function Header() {
 
             {/* CTA */}
             <a
-              href={`https://wa.me/919421612355`}
+              href={`https://wa.me/919421612355?text=${encodeURIComponent(quoteMsg)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary hidden sm:inline-flex text-xs py-2 px-4"
@@ -120,7 +121,7 @@ export default function Header() {
               </Link>
             ))}
             <a
-              href="https://wa.me/919421612355"
+              href={`https://wa.me/919421612355?text=${encodeURIComponent(quoteMsg)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary mt-2 justify-center"
