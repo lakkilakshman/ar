@@ -16,6 +16,8 @@ export interface OrderPayload {
   balanceAmount: string
   paymentTerms: string
   deliveryTime: string
+  fabricType: string
+  gsm: string
   logoFileName?: string
 }
 
@@ -33,7 +35,7 @@ export const sendOrderEmail = createServerFn({ method: 'POST' })
     })
 
     const sizeRows = Object.entries(data.sizes)
-      .map(([size, qty]) => `<td style="padding:6px 10px; text-align:center;">${qty || '0'}</td>`)
+      .map(([_size, qty]) => `<td style="padding:6px 10px; text-align:center;">${qty || '0'}</td>`)
       .join('')
 
     const sizeHeaders = Object.keys(data.sizes)
@@ -63,6 +65,8 @@ export const sendOrderEmail = createServerFn({ method: 'POST' })
             <tr>${sizeRows}</tr>
           </table>
           <p><strong>Total Quantity:</strong> ${data.totalQty}</p>
+          <p><strong>Fabric Type:</strong> ${data.fabricType || 'N/A'}</p>
+          <p><strong>GSM:</strong> ${data.gsm || 'N/A'}</p>
 
           <h3 style="border-bottom: 2px solid #C41E3A; padding-bottom: 6px; color: #C41E3A;">Design Details</h3>
           <p>${data.printDetails || 'No details provided'}</p>
