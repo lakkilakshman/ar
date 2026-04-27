@@ -33,6 +33,8 @@ interface OrderData {
 
   // Delivery
   deliveryTime: string
+  fabricType: string
+  gsm: string
 }
 
 const INITIAL: OrderData = {
@@ -42,6 +44,8 @@ const INITIAL: OrderData = {
   printDetails: '',
   pricePerPiece: '', advancePayment: '', paymentTerms: '',
   deliveryTime: '',
+  fabricType: '',
+  gsm: '',
 }
 
 function OrderPage() {
@@ -78,6 +82,8 @@ function OrderPage() {
       ['Product Type', form.productType],
       ...SIZES.map((s) => [`Size ${s}`, form.sizes[s] || '0']),
       ['Total Quantity', totalQty.toString()],
+      ['Fabric Type', form.fabricType],
+      ['GSM', form.gsm],
       ['', ''],
       ['PRINT DETAILS', ''],
       ['Logo/Design Details', form.printDetails],
@@ -133,6 +139,8 @@ td:first-child { font-weight: bold; color: #555; width: 200px; }
 <tr><td>Product Type</td><td>${form.productType}</td></tr>
 ${SIZES.map((s) => `<tr><td>Size ${s}</td><td>${form.sizes[s] || '0'}</td></tr>`).join('')}
 <tr class="total"><td>Total Quantity</td><td>${totalQty}</td></tr>
+<tr><td>Fabric Type</td><td>${form.fabricType}</td></tr>
+<tr><td>GSM</td><td>${form.gsm}</td></tr>
 </table>
 <h2>Print Details</h2>
 <table>
@@ -182,6 +190,8 @@ ${SIZES.map((s) => `<tr><td>Size ${s}</td><td>${form.sizes[s] || '0'}</td></tr>`
       balanceAmount: balanceAmount.toFixed(2),
       paymentTerms: form.paymentTerms,
       deliveryTime: form.deliveryTime,
+      fabricType: form.fabricType,
+      gsm: form.gsm,
     }
 
     try {
@@ -301,9 +311,20 @@ ${SIZES.map((s) => `<tr><td>Size ${s}</td><td>${form.sizes[s] || '0'}</td></tr>`
               ))}
             </div>
 
-            <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '4px', padding: '0.875rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '4px', padding: '0.875rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
               <span style={{ color: 'var(--text-muted)', fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase' }}>Total Quantity</span>
               <span style={{ color: 'var(--accent)', fontSize: '1.25rem', fontWeight: 800 }}>{totalQty}</span>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label className="form-label">Fabric Type</label>
+                <input className="form-input" placeholder="e.g. 100% Cotton, Matty, Honeycomb" value={form.fabricType} onChange={(e) => set('fabricType', e.target.value)} />
+              </div>
+              <div>
+                <label className="form-label">GSM</label>
+                <input className="form-input" placeholder="e.g. 180, 200, 220" value={form.gsm} onChange={(e) => set('gsm', e.target.value)} />
+              </div>
             </div>
           </section>
 
@@ -336,7 +357,7 @@ ${SIZES.map((s) => `<tr><td>Size ${s}</td><td>${form.sizes[s] || '0'}</td></tr>`
           {/* ── Price & Payment ── */}
           <section>
             <h2 style={{ color: 'var(--text)', fontWeight: 700, fontSize: '1rem', letterSpacing: '0.1em', textTransform: 'uppercase', borderBottom: '2px solid var(--accent)', paddingBottom: '0.5rem', marginBottom: '1.25rem' }}>
-              Price &amp; Payment
+              Price &amp; Payment <span style={{ textTransform: 'none', fontWeight: 400, opacity: 0.8, fontSize: '0.85rem', marginLeft: '4px' }}>(To be filled in by the Arvesta Team)</span>
             </h2>
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
